@@ -2,7 +2,7 @@
 % Please edit documentation in R/lookup_variable.R
 \name{lookup_variable}
 \alias{lookup_variable}
-\title{Lookup Asthma Harmonization Info}
+\title{Lookup Asthma Harmonization Info (dynamic, LLM-enhanced)}
 \usage{
 lookup_variable(variable_name)
 }
@@ -10,13 +10,13 @@ lookup_variable(variable_name)
 \item{variable_name}{A string. The variable you want to lookup.}
 }
 \value{
-A tibble with harmonized information.
+A tibble with harmonized information or triggers ChatGPT if not found.
 }
 \description{
-Given a variable name, returns its harmonization mapping based on the
-internal harmonized_database.
+Lookup Asthma Harmonization Info (dynamic, LLM-enhanced)
 }
 \examples{
+if (interactive()) {
 lookup_variable("age")
-lookup_variable("sex")
+}
 }

@@ -1,38 +1,90 @@
-# asthmaHarmonizer
+ asthmaHarmonizer
+A smart R package to harmonize asthma study variables — now with AI help!
 
-> A lightweight R package for harmonizing asthma-related variables across studies.
+Overview
+asthmaHarmonizer is a lightweight R package designed to standardize asthma-related variables across datasets.
+It includes a built-in harmonized database and can dynamically use ChatGPT to enrich missing mappings!
 
-## Overview
-`asthmaHarmonizer` provides tools to map different variable names from various asthma studies to a common harmonized vocabulary. This helps standardize multi-cohort data analysis.
+Features
+ Lookup variables using an internal harmonized database.
 
-## Features
-- Quickly look up harmonized names and metadata for variables.
-- Internal harmonization database included.
-- Standard vocabulary codes and mappings (e.g., SNOMED-CT).
+ Auto-assist with ChatGPT if a variable is not found.
 
-## Installation
-```r
-# You can install it locally:
+ Auto-parse ChatGPT replies to extract full harmonization fields.
+
+️ Auto-save new variables into backups (log/ folder) and into the dynamic database.
+
+️ Timestamp tracking for every new variable.
+
+ Supports major vocabularies like LOINC, SNOMED-CT, OMOP, RxNorm, ATC, EuroQol.
+
+Installation
+r
+Copy
+Edit
+# First load all files while developing locally
 devtools::load_all()
-```
+ake sure you have devtools, httr, jsonlite, dplyr, readr, cli installed.
 
-## Example Usage
-```r
-# Lookup a variable
+ Example Usage
+r
+Copy
+Edit
+# Lookup an existing variable
 lookup_variable("age")
 
-# Example output
-dplyr::glimpse(harmonized_database)
-```
+# Lookup a missing variable — AI will help!
+lookup_variable("fvc_measured")  # if not found, you can search via ChatGPT
 
-## Documentation
-- `lookup_variable(variable_name)`: Search for a harmonized mapping.
-- `harmonized_database`: Internal tibble with all mappings.
+# View all variables added dynamically
+view_added_variables()
+Dynamic Workflow
+If a variable is not found:
 
-## License
-MIT License. See `LICENSE` file for details.
+You'll be asked if you want to use ChatGPT.
 
----
+The output is parsed into fields:
 
-Developed with ❤️ by Nazanin.
+Harmonized Name
+
+UK Variable
+
+Source Label / Description
+
+Target Concept
+
+Standard Vocabulary
+
+Standard Concept Code
+
+Match Confidence
+
+Summary
+
+You can choose to add it to your working database automatically!
+
+Everything is saved and logged.
+
+Setting Up ChatGPT Access
+You need to set your API key:
+
+r
+Copy
+Edit
+Sys.setenv(OPENAI_API_KEY = "your-actual-api-key-here")
+You can get your API key from platform.openai.com.
+
+ Auto-backups and Logs
+Every time a new variable is added:
+
+A backup of the database is saved (harmonized_database_dynamic_backup.rds).
+
+A CSV log file is saved into the log/ folder.
+
+License
+MIT License. See the LICENSE file for details.
+
+Developed by
+Nazanin
+(and ChatGPT as your coding buddy!)
 
