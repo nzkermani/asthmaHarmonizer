@@ -1,0 +1,23 @@
+Package: asthmaHarmonizer
+Type: Package
+Title: Asthma Variable Harmonization Lookup
+Version: 0.1.0
+Authors@R: 
+    person(given = "Nazanin",
+           family = "Zounemat-Kermani",
+           role = c("aut", "cre"),
+           email = "n.kermani@imperial.ac.uk")
+Description: 
+    A simple tool for looking up harmonized variable names 
+    and concepts for asthma-related research projects.
+    It helps map raw variables to standardized concepts easily.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.5.0)
+Imports:
+    tibble,
+    dplyr,
+    readxl
+RoxygenNote: 7.3.2
