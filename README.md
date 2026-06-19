@@ -32,7 +32,7 @@ or
 Clone the repository and build manually:
 
 ```bash
-git clone https://github.com/your_username/asthmaHarmonizer.git
+git clone https://github.com/nzkermani/asthmaHarmonizer.git
 cd asthmaHarmonizer
 R
 > devtools::install()
