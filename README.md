@@ -88,17 +88,51 @@ Without an API key, the package will **still work normally** for known variables
 ## Example Session
 
 ```r
-> lookup_variable("blood eosinophils")
-Found exact match.
-
+> library(asthmaHarmonizer)
 > lookup_variable("FEV1/FVC ratio")
-Variable not found.
+# A tibble: 1 × 9
+  `Harmonized Name`        `UK Variable` Source Label / Descr…¹ `Target Concept` `Standard Vocabulary`
+  <chr>                    <chr>         <chr>                  <chr>            <chr>                
+1 Ratio of Forced Expirat… FEV1/FVC rat… The ratio of the volu… FEV1/FVC ratio   LOINC                
+# ℹ abbreviated name: ¹​`Source Label / Description`
+# ℹ 4 more variables: `Standard Concept Code` <chr>, `Match Confidence` <chr>, Summary <chr>,
+#   `Timestamp Added` <dttm>
+> lookup_variable("blood eosinophils")
+Variable not found in harmonization database.
 Do you want to search with ChatGPT? (yes/no): yes
-# ChatGPT returns suggestion
-# User chooses "yes" to add
-# New Variable Added!
-# Backup saved
-# Entry logged
+
+ChatGPT suggests:
+
+- Harmonized Name: Blood Eosinophils Count
+- UK Variable: Blood Eosinophils
+- Source Label / Description: The number of eosinophils in a volume of blood. Eosinophils are a type of white blood cell that play a key role in the immune response, particularly in the context of allergies and asthma.
+- Target Concept: Eosinophils count in Blood
+- Standard Vocabulary: LOINC
+- Standard Concept Code: 711-2
+- Match Confidence: High
+- Summary: The variable 'Blood Eosinophils' from the UK dataset can be harmonized to the LOINC standard vocabulary with the concept 'Eosinophils count in Blood' and the concept code 711-2. The match confidence is high as the definitions and context align closely. 
+
+Add this new entry to harmonized_database_dynamic? (yes/no): yes
+
+── New Variable Added! ───────────────────────────────────────────────────────────────────────────────
+# A tibble: 1 × 9
+  `Harmonized Name`       `UK Variable`  Source Label / Descr…¹ `Target Concept` `Standard Vocabulary`
+  <chr>                   <chr>          <chr>                  <chr>            <chr>                
+1 Blood Eosinophils Count Blood Eosinop… The number of eosinop… Eosinophils cou… LOINC                
+# ℹ abbreviated name: ¹​`Source Label / Description`
+# ℹ 4 more variables: `Standard Concept Code` <chr>, `Match Confidence` <chr>, Summary <chr>,
+#   `Timestamp Added` <dttm>
+✔ Full backup saved to: harmonized_database_dynamic_backup.rds
+ℹ Logged new entry to: log/log_new_variables_20260619_113035.csv
+NULL
+> lookup_variable("FEV1/FVC ratio")
+# A tibble: 1 × 9
+  `Harmonized Name`        `UK Variable` Source Label / Descr…¹ `Target Concept` `Standard Vocabulary`
+  <chr>                    <chr>         <chr>                  <chr>            <chr>                
+1 Ratio of Forced Expirat… FEV1/FVC rat… The ratio of the volu… FEV1/FVC ratio   LOINC                
+# ℹ abbreviated name: ¹​`Source Label / Description`
+# ℹ 4 more variables: `Standard Concept Code` <chr>, `Match Confidence` <chr>, Summary <chr>,
+#   `Timestamp Added` <dttm>
 ```
 
 ---
