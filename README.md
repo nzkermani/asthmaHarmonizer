@@ -35,7 +35,8 @@ Clone the repository and build manually:
 git clone https://github.com/nzkermani/asthmaHarmonizer.git
 cd asthmaHarmonizer
 R
-> devtools::install()
+> devtools::install(pkg = ".", upgrade = FALSE, dependencies = FALSE)
+
 ```
 
 ---
